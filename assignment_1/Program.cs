@@ -54,9 +54,9 @@ namespace assignment_1
                 case 5:
                     Question5();
                     break;
-                    //case 6:
-                    //    question6();
-                    //    break;
+                case 6:
+                    Question6();
+                    break;
                     //case 7:
                     //    question7();
                     //    break;
@@ -199,6 +199,7 @@ namespace assignment_1
             MenuPicker();
         }
 
+        #region Question 5
         public static void Question5()
         {
             // start with some color in arrayList
@@ -207,12 +208,10 @@ namespace assignment_1
             list.Add("green");
             list.Add("blue");
 
-            //string[] colors = new string[] { "red", "green", "blue" };
             string inputOption;
             string inputColor;
             // check to see if color was found 
             bool isFoundColor = false;
-
 
             WriteLine("Please enter one the options: search, add or delete an existing color");
             inputOption = ReadLine().ToLower();
@@ -236,22 +235,70 @@ namespace assignment_1
                 if (isFoundColor)
                     WriteLine("The Color is available in the list");
                 else
-                    WriteLine("The color that was searched is not in the list.");
+                    WriteLine("{0} is not in the list.", inputColor);
             }
-            //// add case
-            //else if (inputOption == "add")
-            //{
-            //    WriteLine("Enter the color to add in the list");
+            // add case
+            else if (inputOption == "add")
+            {
+                Write("Enter the color to add in the list: ");
+                inputColor = ReadLine();
+
+                isFoundColor = CheckIfColorExist(list, inputColor);
+
+                // validation to check if color already exist to not have redundency
+                while (isFoundColor)
+                {
+                    WriteLine("That color already exists in the list");
+                    Write("Enter a new color to add in the list: ");
+                    inputColor = ReadLine();
+                    isFoundColor = CheckIfColorExist(list, inputColor);
+                }
+                // add the new color in the list
+                list.Add(inputColor);
+            }
+            // delete case
+            else
+            {
+                Write("Enter the color to delete: ");
+                inputColor = ReadLine();
                 
-            //}
-            //// delete case
-            //for (int i = 0; i < list.Count; i++)
-            //{
+                isFoundColor = CheckIfColorExist(list, inputColor);
+                
+                // validation to check if color exist in the list in order to delete
+                while (!isFoundColor)
+                {
+                    WriteLine("That color does not exists in the list");
+                    Write("Enter a new color to delete in the list: ");
+                    inputColor = ReadLine();
+                    isFoundColor = CheckIfColorExist(list, inputColor);
+                }
 
-            //}
+                // delete the inputColor in the list
+                foreach (var color in list)
+                {
+                    if((string)color == inputColor)
+                    {
+                        list.Remove(color);
+                        break;
+                    }                        
+                }
+            }
 
+            // sort the list in alphabet order
+            list.Sort();
+
+            WriteLine("Total Number of Colors in the list: {0}", list.Count);
+            WriteLine("The colors in the list are: ");
+            // display all colors in list
+            foreach (var color in list)
+            {
+                WriteLine(color);
+            }
+
+            // call back to Menu system
+            MenuPicker();
         }
-
+        // check to see if a color already exists in the list
         public static bool CheckIfColorExist(ArrayList list, string inputColor)
         {
             foreach (var color in list)
@@ -262,6 +309,12 @@ namespace assignment_1
                 }
             }
             return false;
+        }
+        #endregion 
+
+        public static void Question6()
+        {
+
         }
     }
 }
