@@ -162,19 +162,31 @@ namespace assignment_1
         {
             string input;
             string[] words;
-            int numOfWords;
-            int totalNumSpaces;
+            int numOfWords = 0;
+            int totalNumSpaces = 0;
             string longestWord;
             string shortestWord;
 
             WriteLine("Enter your sentence to get the following info about the sentence: ");
             input = ReadLine();
+            
+            if (input != "")
+            {
+                // split each words by space into the array
+                words = input.Split(' ');
 
-            // split each words by space into the array
-            words = input.Split(' ');
+                numOfWords = words.Length;
+                totalNumSpaces = words.Length - 1;
 
-            Write("Number of words: " + words.Length);
+                foreach (var word in words)
+                {
+                    System.Console.WriteLine($"<{word}>");
+                }
 
+            }
+            
+            Write("Number of words: " + numOfWords);
+            Write("Total number of spaces: " + totalNumSpaces);
 
 
 
