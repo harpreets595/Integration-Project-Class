@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading.Tasks.Dataflow;
 using static System.Console;
 
@@ -51,7 +52,7 @@ namespace assignment_1
                     Question4();
                     break;
                 case 5:
-                    test();
+                    Question5();
                     break;
                     //case 6:
                     //    question6();
@@ -66,11 +67,6 @@ namespace assignment_1
                     //    System.Environment.Exit(0);
                     //    break;
             }
-        }
-
-        public static void CheckInputValidationForIntegers(int input)
-        {
-            
         }
 
         public static void Question1()
@@ -160,12 +156,17 @@ namespace assignment_1
 
         public static void Question4()
         {
+            Clear();
+
             string input;
             string[] words;
             int numOfWords = 0;
             int totalNumSpaces = 0;
-            string longestWord;
-            string shortestWord;
+            string longestWord = "";
+            string shortestWord ="";
+            // get the index of correspondings to display the word in the array
+            int longWordCount;
+            int shortWordCount;
 
             WriteLine("Enter your sentence to get the following info about the sentence: ");
             input = ReadLine();
@@ -174,50 +175,93 @@ namespace assignment_1
             {
                 // split each words by space into the array
                 words = input.Split(' ');
+                longWordCount = words[0].Length;
+                shortWordCount = words[0].Length;
 
                 numOfWords = words.Length;
                 totalNumSpaces = words.Length - 1;
-
+                
                 foreach (var word in words)
                 {
-                    System.Console.WriteLine($"<{word}>");
+                    if(word.Length >= longWordCount)
+                        longestWord = word;
+                    if(word.Length <= shortWordCount)
+                        shortestWord = word;
                 }
-
             }
-            
-            Write("Number of words: " + numOfWords);
-            Write("Total number of spaces: " + totalNumSpaces);
-
-
+            // printout of the results at the end
+            WriteLine("\nNumber of words: " + numOfWords);
+            WriteLine("Total number of spaces: " + totalNumSpaces);
+            WriteLine("Shortest word: " + shortestWord);
+            WriteLine("Longest word: " + longestWord);
 
             // call back to Menu system
             MenuPicker();
+        }
+
+        public static void Question5()
+        {
+            // start with some color in arrayList
+            ArrayList list = new ArrayList();
+            list.Add("red");
+            list.Add("green");
+            list.Add("blue");
+
+            //string[] colors = new string[] { "red", "green", "blue" };
+            string inputOption;
+            string inputColor;
+            // check to see if color was found 
+            bool isFoundColor = false;
+
+
+            WriteLine("Please enter one the options: search, add or delete an existing color");
+            inputOption = ReadLine().ToLower();
+
+            // input validation
+            while(inputOption != "search" && inputOption != "add" && inputOption != "delete")
+            {
+                ForegroundColor = ConsoleColor.Red;
+                WriteLine("Error! Please enter one the options: search, add or delete");
+                ResetColor();
+                inputOption = ReadLine().ToLower();
+            }
+            // search case
+            if(inputOption == "search")
+            {
+                Write("Enter the color to search: ");
+                inputColor = ReadLine();
+                // check to if color exist in a different method
+                isFoundColor = CheckIfColorExist(list, inputColor);
+                
+                if (isFoundColor)
+                    WriteLine("The Color is available in the list");
+                else
+                    WriteLine("The color that was searched is not in the list.");
+            }
+            //// add case
+            //else if (inputOption == "add")
+            //{
+            //    WriteLine("Enter the color to add in the list");
+                
+            //}
+            //// delete case
+            //for (int i = 0; i < list.Count; i++)
+            //{
+
+            //}
 
         }
 
-        public static void test()
+        public static bool CheckIfColorExist(ArrayList list, string inputColor)
         {
-            string phrase = "";
-            string[] words;
-
-            if (phrase == "")
+            foreach (var color in list)
             {
-                Write("Number of words: 0");
-
-            }
-            else 
-            {
-                words = phrase.Split(' ');
-                
-                Write("Number of words: " + words.Length);
-
-                foreach (var word in words)
+                if (inputColor == (string)color)
                 {
-                    System.Console.WriteLine($"<{word}>");
+                    return true;
                 }
             }
-           
-            
+            return false;
         }
     }
 }
