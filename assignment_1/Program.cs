@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks.Dataflow;
 using static System.Console;
 
@@ -57,12 +59,12 @@ namespace assignment_1
                 case 6:
                     Question6();
                     break;
-                    //case 7:
-                    //    question7();
-                    //    break;
-                    //case 8:
-                    //    question8();
-                    //    break;
+                case 7:
+                    Question7();
+                    break;
+                case 8:
+                    Question8();
+                    break;
                     //default:
                     //    System.Environment.Exit(0);
                     //    break;
@@ -304,9 +306,7 @@ namespace assignment_1
             foreach (var color in list)
             {
                 if (inputColor == (string)color)
-                {
                     return true;
-                }
             }
             return false;
         }
@@ -314,7 +314,78 @@ namespace assignment_1
 
         public static void Question6()
         {
+            Clear();
 
+            //string filePath = @"\Employee_DATA.csv";
+
+            //string path = Path.GetFullPath("Employee_DATA.csv");
+            var reader = new StreamReader(File.OpenRead(@"C:\Users\harp\Documents\GitHub\Integration-Project-Class\assignment_1\Employee_DATA.csv"));
+            Console.WriteLine(reader);
+ 
+            int id;
+            string fname;
+            string lname;
+            string dept;
+            string pos;
+            decimal yearSal;
+            int counter = 0;
+            var employeeList = new List<Employee>();
+
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                var lineResult = line.Split(',');
+
+                id = Int32.Parse(lineResult[0]);
+                yearSal = Decimal.Parse(lineResult[5]); 
+                employeeList.Add(new Employee(id, lineResult[1], lineResult[2], lineResult[3], lineResult[4], yearSal));
+            }
+
+
+
+            var winners = new List<Employee>();
+            for (int i = 0; i < 3; i++)
+            {
+                GenerateRandomNumber(employeeList.Count, employeeList, winners);
+            }
+
+            Console.WriteLine("Platinum Place:");
+            Console.WriteLine("First name: {0}, Last name: {1}, Deparment: {2}, Position: {3}, YearlySalary: {4}", winners[0].FirstName, winners[0].LastName, winners[0].Departement, winners[0].Position, winners[0].YearlySalary);
+            Console.WriteLine("Gold Place:");
+            Console.WriteLine("First name: {0}, Last name: {1}, Deparment: {2}, Position: {3}, YearlySalary: {4}", winners[1].FirstName, winners[1].LastName, winners[1].Departement, winners[1].Position, winners[1].YearlySalary);
+            Console.WriteLine("Silver Place:");
+            Console.WriteLine("First name: {0}, Last name: {1}, Deparment: {2}, Position: {3}, YearlySalary: {4}", winners[2].FirstName, winners[2].LastName, winners[2].Departement, winners[2].Position, winners[2].YearlySalary);
+
+
+        }
+
+        public static int GenerateRandomNumber(int range, List<Employee> employeeList, List<Employee> winners)
+        {
+            var random = new Random();
+            var randomNumber = random.Next(range);
+            winners.Add(employeeList[randomNumber]);
+            //remove employee from list.
+            employeeList.RemoveAt(randomNumber);
+
+            return randomNumber;
+        }
+
+
+        public static void Question7()
+        {
+            Letter l = new Letter(new DateTime(1995, 1, 1), "many");
+            CertifiedLetter cl = new CertifiedLetter(3);
+
+            WriteLine(cl.ToString());
+
+        }
+
+        public static void Question8()
+        {
+            var cookieOrder = new CookieOrder("Happy", 5, 5, "oatmeal");
+            //returns the total price.
+            WriteLine(cookieOrder.CalculatePrice(cookieOrder));
         }
     }
 }
