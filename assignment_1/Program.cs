@@ -383,9 +383,13 @@ namespace assignment_1
 
         public static void Question8()
         {
-            var cookieOrder = new CookieOrder("Happy", 5, 5, "oatmeal");
+            var cookieOrder1 = new CookieOrder("Happy", 5, 5, "oatmeal");
             //returns the total price.
-            WriteLine(cookieOrder.CalculatePrice(cookieOrder));
+            WriteLine(cookieOrder1.CalculatePrice(cookieOrder1));
+
+            var cookieOrder2 = new CookieOrder("Happy", 5, 1, "oatmeal");
+            WriteLine(cookieOrder2.CalculatePrice(cookieOrder2));
+
         }
     }
 }

@@ -12,13 +12,13 @@ namespace assignment_1
         public string _typeOfCookie { get; set; }
         public decimal _totalPrice { get; set; }
 
-        public CookieOrder(string customerName, int orderNumber, int quantity, string typeOfCookie, decimal totalPrice)
+        public CookieOrder(string customerName, int orderNumber, int quantity, string typeOfCookie)
         {
             _customerName = customerName;
             _orderNumber = orderNumber;
             _quantity = quantity;
             _typeOfCookie = typeOfCookie;
-            _totalPrice = totalPrice;
+            
         }
 
         public decimal CalculatePrice(CookieOrder cookie)
