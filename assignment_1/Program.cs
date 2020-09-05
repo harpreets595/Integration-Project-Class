@@ -65,12 +65,10 @@ namespace assignment_1
                 case 8:
                     Question8();
                     break;
-                    //default:
-                    //    System.Environment.Exit(0);
-                    //    break;
             }
         }
 
+        #region Question 1
         public static void Question1()
         {
             Clear();
@@ -97,7 +95,9 @@ namespace assignment_1
             MenuPicker();
             
         }
+        #endregion
 
+        #region Question 2
         public static void Question2()
         {
             Clear();
@@ -142,20 +142,60 @@ namespace assignment_1
             // call back to Menu system
             MenuPicker();
         }
+        #endregion
 
+        #region Question 3
         public static void Question3()
         {
-            decimal input;
+            Clear();
 
-            WriteLine("Enter the amount to receive as change: ");
-            while (!decimal.TryParse(ReadLine(), out input) || input < 0)
+            int input;
+            int hundreds;
+            int fifties;
+            int twenties;
+            int tens;
+            int fives;
+            int twos;
+            int ones;
+            int remainder;
+
+            WriteLine("Enter the amount to receive the change: ");
+            while (!int.TryParse(ReadLine(), out input) || input < 0)
             {
                 ForegroundColor = ConsoleColor.Red;
                 Write("Error, please enter a valid Positive amount: ");
                 ResetColor();
             }
-        }
 
+            hundreds = input / 100;
+            remainder = input % 100;
+
+            fifties = remainder / 50;
+            remainder = remainder % 50;
+
+            twenties = remainder / 20;
+            remainder = remainder % 20;
+
+            tens = remainder / 10;
+            remainder = remainder % 10;
+
+            fives = remainder / 5;
+            remainder = remainder % 5;
+
+            twos = remainder / 2;
+            remainder = remainder % 2;
+
+            ones = remainder / 1;
+
+            Console.WriteLine("Hundred {0}, Fifty {1}, Twenty {2}, Ten {3}, Five {4}, Two {5}, One {6}",
+                hundreds, fifties, twenties, tens, fives, twos, ones);
+
+            // call back to Menu system
+            MenuPicker();
+        }
+        #endregion
+
+        #region Question 4
         public static void Question4()
         {
             Clear();
@@ -200,10 +240,13 @@ namespace assignment_1
             // call back to Menu system
             MenuPicker();
         }
+        #endregion
 
         #region Question 5
         public static void Question5()
         {
+            Clear();
+
             // start with some color in arrayList
             ArrayList list = new ArrayList();
             list.Add("red");
@@ -310,8 +353,9 @@ namespace assignment_1
             }
             return false;
         }
-        #endregion 
+        #endregion
 
+        #region Question 6
         public static void Question6()
         {
             Clear();
@@ -342,8 +386,6 @@ namespace assignment_1
                 employeeList.Add(new Employee(id, lineResult[1], lineResult[2], lineResult[3], lineResult[4], yearSal));
             }
 
-
-
             var winners = new List<Employee>();
             for (int i = 0; i < 3; i++)
             {
@@ -357,8 +399,10 @@ namespace assignment_1
             Console.WriteLine("Silver Place:");
             Console.WriteLine("First name: {0}, Last name: {1}, Deparment: {2}, Position: {3}, YearlySalary: {4}", winners[2].FirstName, winners[2].LastName, winners[2].Departement, winners[2].Position, winners[2].YearlySalary);
 
-
+            // call back to Menu system
+            MenuPicker();
         }
+        
 
         public static int GenerateRandomNumber(int range, List<Employee> employeeList, List<Employee> winners)
         {
@@ -370,26 +414,41 @@ namespace assignment_1
 
             return randomNumber;
         }
+        #endregion
 
-
+        #region Question 7
         public static void Question7()
         {
-            Letter l = new Letter(new DateTime(1995, 1, 1), "many");
-            CertifiedLetter cl = new CertifiedLetter(3);
+            Clear(); 
 
-            WriteLine(cl.ToString());
+            Letter letter = new Letter(new DateTime(1995, 1, 1), "many");
+            Console.WriteLine("Date: {0}, Recipient: {1}", letter._date, letter._recipient);
 
+            var certifiedLetter = new CertifiedLetter(5, new DateTime(2010, 1, 1), "Harpreet");
+            Console.WriteLine(certifiedLetter.ToString());
+
+            // call back to Menu system
+            MenuPicker();
         }
+        #endregion
 
+        #region Question 8
         public static void Question8()
         {
-            var cookieOrder1 = new CookieOrder("Happy", 5, 5, "oatmeal");
-            //returns the total price.
-            WriteLine(cookieOrder1.CalculatePrice(cookieOrder1));
+            Clear();
 
-            var cookieOrder2 = new CookieOrder("Happy", 5, 1, "oatmeal");
-            WriteLine(cookieOrder2.CalculatePrice(cookieOrder2));
+            var cookieOrder1 = new CookieOrder("Happy", 5, 5, "triple chocholate");
+            cookieOrder1.CalculatePrice();
+          
+            var cookieOrder2 = new CookieOrder("Manny", 2, 29, "double chocolate");
+            cookieOrder2.CalculatePrice();
 
+            var specialCookieOrder = new SpecialCookieOrder("gluten-free", "vicky", 2, 45, "chocolatechip");
+            specialCookieOrder.CalculatePrice();
+
+            // call back to Menu system
+            MenuPicker();
         }
+        #endregion
     }
 }

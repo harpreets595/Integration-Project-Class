@@ -13,14 +13,15 @@ namespace assignment_1
 
         }
 
-        public CertifiedLetter(int trackingNumber)
+        public CertifiedLetter(int trackingNumber, DateTime date, string recipient) : base (date, recipient) 
         {
             _TrackingNumber = trackingNumber;
         }   
 
         public override string ToString()
         {
-            return string.Format("date {0}, reciepient {1}, trackingNumber : {2}", _date, _recipient, _TrackingNumber);
+            return string.Format("date: {0}, reciepient: {1}, trackingNumber : {2}", _date, _recipient, _TrackingNumber);
+
         }
     }
 

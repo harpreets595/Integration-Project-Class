@@ -12,6 +12,12 @@ namespace assignment_1
         public string _typeOfCookie { get; set; }
         public decimal _totalPrice { get; set; }
 
+        public const int TWO_DOZEN = 24;
+        public const decimal PRICE_LESS_THAN_24_COOKIES = 2.25m;
+        public const decimal PRICE_MORE_THAN_24_COOKIES = 1.50m;
+
+
+
         public CookieOrder(string customerName, int orderNumber, int quantity, string typeOfCookie)
         {
             _customerName = customerName;
@@ -21,18 +27,18 @@ namespace assignment_1
             
         }
 
-        public decimal CalculatePrice(CookieOrder cookie)
-        {
-            
-            if (cookie._quantity < 24)
+        public virtual void CalculatePrice()
+        {        
+            if (_quantity < TWO_DOZEN)
             {
-                cookie._totalPrice = (decimal)(2.25 * cookie._quantity);
+                _totalPrice = (PRICE_LESS_THAN_24_COOKIES * _quantity);
+                Console.WriteLine("Total Price for less than two dozen: {0}", _totalPrice);
             }
             else
             {
-                cookie._totalPrice = (decimal)(1.50 * cookie._quantity);
+                _totalPrice = (PRICE_MORE_THAN_24_COOKIES * _quantity);
+                Console.WriteLine("Total Price for more than two dozen: {0}", _totalPrice);
             }
-            return cookie._totalPrice;
         }
     }
 }
