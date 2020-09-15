@@ -106,6 +106,7 @@ namespace Assignment2
                     Question3(studentList);
                     break;
                 case 4:
+                    Question4(studentList);
                     break;
                 case 5:
                     break;
@@ -172,7 +173,27 @@ namespace Assignment2
         }
         #endregion
 
+        #region Question_4 Students who scored over 320 marks in total (across all their tests)
+        public static void Question4(List<Student> studentList)
+        {
 
+            var studentQuery =
+                from s in studentList
+                where (s.Scores.GetRange(0, 4).Sum()) >= 320
+                select s;
+
+            //var studentQuery =
+            //    from s in studentList
+            //    let totalScore = s.Scores[0] + s.Scores[1] + s.Scores[2] + s.Scores[3]
+            //    select s;
+
+
+            foreach (var student in studentQuery)
+            {
+                Console.WriteLine("{0} {1}, Score: {2}", student.First, student.Last, student.Scores.GetRange(0, 4).Sum());
+            }
+        }
+        #endregion
 
     }
 }
