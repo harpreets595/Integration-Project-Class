@@ -199,17 +199,10 @@ namespace Assignment2
         #region Question_5 Students who scored at least 60 in all of their tests
         public static void Question5(List<Student> studentList)
         {
-
             var studentQuery =
                 from s in studentList
                 where s.Scores[0] >= 60 && s.Scores[1] >=60 && s.Scores[2] >= 60 && s.Scores[3] >= 60
                 select s;
-
-            //var studentQuery =
-            //    from s in studentList
-            //    let totalScore = s.Scores[0] + s.Scores[1] + s.Scores[2] + s.Scores[3]
-            //    select s;
-
 
             foreach (var student in studentQuery)
             {
@@ -218,7 +211,26 @@ namespace Assignment2
         }
         #endregion
 
+        #region Question_6 Students grouped by first letter of their last name
+        public static void Question6(List<Student> studentList)
+        {
+            var studentQuery =
+                from s in studentList
+                group s by s.Last;
+                
+            foreach (var student in studentQuery)
+            {
+                Console.WriteLine("{0} {1}", student.First, student.Last);
+            }
 
+        }
+        #endregion
 
+        #region Question_7 Average score of each test
+        public static void Question7(List<Student> studentList)
+        {
+            
+        }
+        #endregion
     }
 }
