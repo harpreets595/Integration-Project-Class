@@ -112,8 +112,10 @@ namespace Assignment2
                     Question5(studentList);
                     break;
                 case 6:
+                    Question6(studentList);
                     break;
                 case 7:
+                    Question7(studentList);
                     break;
                 case 8:
                     break;
@@ -214,13 +216,19 @@ namespace Assignment2
         #region Question_6 Students grouped by first letter of their last name
         public static void Question6(List<Student> studentList)
         {
+            Console.WriteLine();
             var studentQuery =
                 from s in studentList
                 group s by s.Last;
-                
-            foreach (var student in studentQuery)
+               
+            foreach (var studentGroup in studentQuery)
             {
-                Console.WriteLine("{0} {1}", student.First, student.Last);
+                // get the first letter with substring method
+                Console.WriteLine(studentGroup.Key.Substring(0, 1));
+                foreach (var s in studentGroup)
+                {
+                    Console.WriteLine("{0}, {1}",s.Last, s.First);
+                }
             }
 
         }
