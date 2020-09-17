@@ -66,7 +66,8 @@ namespace Assignment2
         
         public static void MenuPicker(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            WriteLine("\n");
+            Clear();
+            //WriteLine("\n");
 
             int input;
 
@@ -86,7 +87,7 @@ namespace Assignment2
             Console.WriteLine();
             Console.Write("Enter number 1 to 11, enter 0 to exit: ");
 
-            while (!int.TryParse(ReadLine(), out input) || input < MINOPTION || input > MAXOPTION)
+            while (!int.TryParse(ReadLine(), out input) || (input < MINOPTION || input > MAXOPTION) && input !=0)
             {
                 ForegroundColor = ConsoleColor.Red;
                 Write("Error, please enter a valid menu choice: ");
@@ -99,44 +100,46 @@ namespace Assignment2
             switch (input)
             {
                 case 1:
-                    Question1(studentList);
+                    Question1(studentList, teacherList, courseList);
                     break;
                 case 2:
-                    Question2(studentList);
+                    Question2(studentList, teacherList, courseList);
                     break;
                 case 3:
-                    Question3(studentList);
+                    Question3(studentList, teacherList, courseList);
                     break;
                 case 4:
-                    Question4(studentList);
+                    Question4(studentList, teacherList, courseList);
                     break;
                 case 5:
-                    Question5(studentList);
+                    Question5(studentList, teacherList, courseList);
                     break;
                 case 6:
-                    Question6(studentList);
+                    Question6(studentList, teacherList, courseList);
                     break;
                 case 7:
-                    Question7(studentList);
+                    Question7(studentList, teacherList, courseList);
                     break;
                 case 8:
-                    Question8(studentList, teacherList);
+                    Question8(studentList, teacherList, courseList);
                     break;
                 case 9:
-                    Question9(courseList);
+                    Question9(studentList, teacherList, courseList);
                     break;
                 case 10:
-                    Question10(courseList);
+                    Question10(studentList, teacherList, courseList);
                     break;
                 case 11:
-                    Question11(courseList);
+                    Question11(studentList, teacherList, courseList);
                     break;
             }
         }
 
         #region Question_1 Students who are under 18 years of age (in order of age)
-        public static void Question1(List<Student> studentList)
+        public static void Question1(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
+            Clear();
+
             var studentQuery =
                 from s in studentList
                 where s.Age < 18
@@ -147,12 +150,17 @@ namespace Assignment2
             {
                 Console.WriteLine("{0} {1}, Age: {2}", student.First, student.Last, student.Age);
             }
+
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
+
         }
         #endregion
 
         #region Question_2 Students who are teenagers (alphabetical order by last name)
-        public static void Question2(List<Student> studentList)
+        public static void Question2(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
+            Clear();
             var studentQuery =
                 from s in studentList
                 where s.Age >= 13 && s.Age <= 19
@@ -163,12 +171,15 @@ namespace Assignment2
             {
                 Console.WriteLine("{0} {1}, Age: {2}", student.First, student.Last, student.Age);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_3 Students who scored 80 or more in their last test (order by score descending)
-        public static void Question3(List<Student> studentList)
+        public static void Question3(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
+            Clear();
             var studentQuery =
                 from s in studentList
                 where s.Scores[3] >= 80
@@ -179,13 +190,15 @@ namespace Assignment2
             {
                 Console.WriteLine("{0} {1}, Score: {2}", student.First, student.Last, student.Scores[3]);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_4 Students who scored over 320 marks in total (across all their tests)
-        public static void Question4(List<Student> studentList)
+        public static void Question4(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-
+            Clear();
             var studentQuery =
                 from s in studentList
                 where (s.Scores.GetRange(0, 4).Sum()) >= 320
@@ -201,12 +214,15 @@ namespace Assignment2
             {
                 Console.WriteLine("{0} {1}, Score: {2}", student.First, student.Last, student.Scores.GetRange(0, 4).Sum());
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_5 Students who scored at least 60 in all of their tests
-        public static void Question5(List<Student> studentList)
+        public static void Question5(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
+            Clear();
             var studentQuery =
                 from s in studentList
                 where s.Scores[0] >= 60 && s.Scores[1] >=60 && s.Scores[2] >= 60 && s.Scores[3] >= 60
@@ -216,13 +232,16 @@ namespace Assignment2
             {
                 Console.WriteLine("{0} {1}", student.First, student.Last);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_6 Students grouped by first letter of their last name
-        public static void Question6(List<Student> studentList)
+        public static void Question6(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            Console.WriteLine();
+            Clear();
+            
             var studentQuery =
                 from s in studentList
                 group s by s.Last;
@@ -236,14 +255,18 @@ namespace Assignment2
                     Console.WriteLine("{0}, {1}",s.Last, s.First);
                 }
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
 
         }
         #endregion
 
 
         #region Question_7 Average score of each test
-        public static void Question7(List<Student> studentList)
+        public static void Question7(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
+            Clear();
+
             // query test1
             var studentQuery1 =
                 from s in studentList
@@ -305,14 +328,16 @@ namespace Assignment2
             Console.WriteLine("Average score for test 3: {0}", avgTest3);
             Console.WriteLine("Average score for test 4: {0}", avgTest4);
 
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
+
         }
         #endregion
 
         #region Question_8 Students who are also teachers
-        public static void Question8(List<Student> studentList, List<Staff> teacherList)
+        public static void Question8(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            Console.WriteLine();
-
+            Clear();
             var queryStudentAndTeacher = from s in studentList
                             join t in teacherList 
                             on new { s.First, s.Last }
@@ -324,14 +349,15 @@ namespace Assignment2
             {
                 Console.WriteLine(name);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_9 Courses of a duration of 15 weeks
-        public static void Question9(List<Course> courseList)
+        public static void Question9(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            Console.WriteLine();
-
+            Clear();
             var queryCourseDuration = from c in courseList
                                       where c.Duration == 15
                                       select c;
@@ -341,14 +367,15 @@ namespace Assignment2
             {
                 Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}",c.Code, c.Name, c.Semester, c.Duration);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_10 Courses held in the Winter semester (order by duration)
-        public static void Question10(List<Course> courseList)
+        public static void Question10(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            Console.WriteLine();
-
+            Clear();
             var queryCourseSemester = from c in courseList
                                       where c.Semester == "Winter"
                                       orderby c.Duration
@@ -359,14 +386,15 @@ namespace Assignment2
             {
                 Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}", c.Code, c.Name, c.Semester, c.Duration);
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
         #region Question_11 Courses grouped by semester
-        public static void Question11(List<Course> courseList)
+        public static void Question11(List<Student> studentList, List<Staff> teacherList, List<Course> courseList)
         {
-            Console.WriteLine();
-
+            Clear();
             var queryCourseSemester = from c in courseList
                                       group c by c.Semester;
 
@@ -378,6 +406,8 @@ namespace Assignment2
                     Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}", c.Code, c.Name, c.Semester, c.Duration);
                 }
             }
+            Console.ReadLine();
+            MenuPicker(studentList, teacherList, courseList);
         }
         #endregion
 
