@@ -10,6 +10,8 @@ namespace Assignment2
         const int MINOPTION = 1;
         const int MAXOPTION = 11;
         const int EXIT = 0;
+        const int NUM_OF_SCORES = 4;
+        const int NUM_OF_STUDENTS = 11;
         static void Main(string[] args)
         {
             List<Student> studentList = new List<Student>
@@ -118,12 +120,16 @@ namespace Assignment2
                     Question7(studentList);
                     break;
                 case 8:
+                    Question8(studentList, teacherList);
                     break;
                 case 9:
+                    Question9(courseList);
                     break;
                 case 10:
+                    Question10(courseList);
                     break;
                 case 11:
+                    Question11(courseList);
                     break;
             }
         }
@@ -234,11 +240,146 @@ namespace Assignment2
         }
         #endregion
 
+
         #region Question_7 Average score of each test
         public static void Question7(List<Student> studentList)
         {
+            // query test1
+            var studentQuery1 =
+                from s in studentList
+                let totalScore1 = s.Scores[0]
+                select totalScore1;
+
+            var studentQuery2 =
+                from s in studentList
+                let totalScore2 = s.Scores[1]
+                select totalScore2;
             
+            var studentQuery3 =
+                from s in studentList
+                let totalScore3 = s.Scores[2]
+                select totalScore3;
+            
+            var studentQuery4 =
+                from s in studentList
+                let totalScore4 = s.Scores[3]
+                select totalScore4;
+
+            int sum1 = 0;
+            int sum2 = 0;
+            int sum3 = 0;
+            int sum4 = 0;
+            double avgTest1 = 0;
+            double avgTest2 = 0;
+            double avgTest3 = 0;
+            double avgTest4 = 0;
+
+            // test1
+            foreach (var testResult in studentQuery1)
+            {
+                sum1 += testResult;
+            }
+            // test2
+            foreach (var testResult in studentQuery2)
+            {
+                sum2 += testResult;
+            }
+            // test 3
+            foreach (var testResult in studentQuery3)
+            {
+                sum3 += testResult;
+            }
+            // test 4
+            foreach (var testResult in studentQuery4)
+            {
+                sum4 += testResult;
+            }
+
+            avgTest1 = sum1 / NUM_OF_STUDENTS;
+            avgTest2 = sum2 / NUM_OF_STUDENTS;
+            avgTest3 = sum3 / NUM_OF_STUDENTS;
+            avgTest4 = sum4 / NUM_OF_STUDENTS;
+            
+            Console.WriteLine("Average score for test 1: {0}", avgTest1);
+            Console.WriteLine("Average score for test 2: {0}", avgTest2);
+            Console.WriteLine("Average score for test 3: {0}", avgTest3);
+            Console.WriteLine("Average score for test 4: {0}", avgTest4);
+
         }
         #endregion
+
+        #region Question_8 Students who are also teachers
+        public static void Question8(List<Student> studentList, List<Staff> teacherList)
+        {
+            Console.WriteLine();
+
+            var queryStudentAndTeacher = from s in studentList
+                            join t in teacherList 
+                            on new { s.First, s.Last }
+                            equals new {t.First, t.Last}
+                            select t.First + " " + t.Last;
+
+            Console.WriteLine("Students who are also teachers are: ");
+            foreach (var name in queryStudentAndTeacher)
+            {
+                Console.WriteLine(name);
+            }
+        }
+        #endregion
+
+        #region Question_9 Courses of a duration of 15 weeks
+        public static void Question9(List<Course> courseList)
+        {
+            Console.WriteLine();
+
+            var queryCourseDuration = from c in courseList
+                                      where c.Duration == 15
+                                      select c;
+
+            Console.WriteLine("Courses of a duration of 15 weeks: ");
+            foreach (var c in queryCourseDuration)
+            {
+                Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}",c.Code, c.Name, c.Semester, c.Duration);
+            }
+        }
+        #endregion
+
+        #region Question_10 Courses held in the Winter semester (order by duration)
+        public static void Question10(List<Course> courseList)
+        {
+            Console.WriteLine();
+
+            var queryCourseSemester = from c in courseList
+                                      where c.Semester == "Winter"
+                                      orderby c.Duration
+                                      select c;
+
+            Console.WriteLine("Courses of a duration of 15 weeks: ");
+            foreach (var c in queryCourseSemester)
+            {
+                Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}", c.Code, c.Name, c.Semester, c.Duration);
+            }
+        }
+        #endregion
+
+        #region Question_11 Courses grouped by semester
+        public static void Question11(List<Course> courseList)
+        {
+            Console.WriteLine();
+
+            var queryCourseSemester = from c in courseList
+                                      group c by c.Semester;
+
+            foreach (var courseGroup in queryCourseSemester)
+            {
+                Console.WriteLine(courseGroup.Key);
+                foreach (var c in courseGroup)
+                {
+                    Console.WriteLine("Code: {0}, Name: {1}, Semester: {2}, Duration: {3}", c.Code, c.Name, c.Semester, c.Duration);
+                }
+            }
+        }
+        #endregion
+
     }
 }
