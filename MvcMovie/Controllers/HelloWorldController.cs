@@ -6,24 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MvcMovie.Controllers
 {
-    public class HelloWordController : Controller
+    public class HelloWorld : Controller
     {
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-
-        // GET: /HelloWorld/
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
+
+        
+        // GET: /HelloWorld/
+        //public stridng Index()
+        //{
+        //    return "This is my default action...";
+        //}
 
         // GET: /HelloWorld/Welcome/ 
         public string Welcome(string name, int numTimes = 1)
         {
             return $"hello {name} to this world, Num Times = {numTimes}";
+
         }
     }
 }
