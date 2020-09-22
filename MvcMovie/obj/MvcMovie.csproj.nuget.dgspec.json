@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj": {}
+    "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj": {
+    "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj",
+        "projectUniqueName": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj",
         "projectName": "MvcMovie",
-        "projectPath": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj",
-        "packagesPath": "C:\\Users\\Harpreet Singh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\obj\\",
+        "projectPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\MvcMovie.csproj",
+        "packagesPath": "C:\\Users\\harp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\MvcMovie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Harpreet Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\harp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
