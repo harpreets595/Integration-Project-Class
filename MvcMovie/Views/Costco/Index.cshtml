@@ -3,10 +3,11 @@
 
 <h1>Costco Cashback Calculator</h1>
 
-<form action="/" method="get">
+<form asp-action="CashBackCalculator" asp-controller="Costco" method="get">
     amount
     <input type="type" name="amount" value="" /><br />
-    <button>Submit Query</button>
 
+    <button>Submit Query</button>
+    Your cashBack is @ViewData["cashBackAmount"];
 
 </form>

@@ -8,11 +8,16 @@ namespace MvcMovie.Controllers
 {
     public class CostcoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(double amount = 0)
         {
-            
+
+            double totalAmount = amount * 0.02;
+
+            ViewData["cashBackAmount"] = totalAmount;
 
             return View();
         }
+
+
     }
 }
