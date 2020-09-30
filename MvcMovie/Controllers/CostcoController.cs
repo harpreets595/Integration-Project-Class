@@ -10,14 +10,21 @@ namespace MvcMovie.Controllers
     {
         public IActionResult Index(double amount = 0)
         {
+            string output = "";
+            if (amount > 0) 
+            {
+                double totalAmount = amount * 0.02;
+                output = totalAmount.ToString("C");
+            }
+            else
+            {
+                output = "N/A";
+            }
 
-            double totalAmount = amount * 0.02;
-
-            ViewData["cashBackAmount"] = totalAmount;
+            ViewData["amount"] = amount;
+            ViewData["cashBackAmount"] = output;
 
             return View();
         }
-
-
     }
 }
