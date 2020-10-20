@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<BikeShop.Models.BikeListModel>
 @{
-    ViewData["Title"] = "Road";
+    ViewData["Title"] = "Road Models";
 }
 
-<h1>Road</h1>
+<h1>Road model List</h1>
 
 @foreach (var item in Model)
 {
     <div>
-        @Html.ActionLink(item.ProductModel)
+        @Html.ActionLink(item.ProductModel, "Details", new {id = item.ProductModelID}) <!--Bikes/Details/26-->
+        <p>@item.Description</p>
     </div>
 }

@@ -31,9 +31,7 @@ namespace BikeShop.Controllers
                            where bikes.ParentProductCategoryId == 1
                            select bikes;
 
-            return View(bikeList);
-
-
+            return View(bikeList.ToList());
         }
 
         public IActionResult Road()
@@ -53,22 +51,23 @@ namespace BikeShop.Controllers
         }
 
         // GET: Bikes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var productCategory = await db.ProductCategory
-                .Include(p => p.ParentProductCategory)
-                .FirstOrDefaultAsync(m => m.ProductCategoryId == id);
-            if (productCategory == null)
+            var products = from product in db.Product
+                           where product.ProductModelId == id && product.SellEndDate == null
+                           select product;
+
+            if (products == null)
             {
                 return NotFound();
             }
 
-            return View(productCategory);
+            return View(products.ToList());
         }
 
         // GET: Bikes/Create
