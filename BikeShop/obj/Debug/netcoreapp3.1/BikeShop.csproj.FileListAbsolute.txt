@@ -351,3 +351,5 @@ C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\
 C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\Debug\netcoreapp3.1\BikeShop.genruntimeconfig.cache
 C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\Debug\netcoreapp3.1\Razor\Views\Bikes\Detailsss.cshtml.g.cs
 C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\Debug\netcoreapp3.1\Razor\Views\Bikes\Details.cshtml.g.cs
+C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\Debug\netcoreapp3.1\Razor\Views\Bikes\Mountain.cshtml.g.cs
+C:\Users\Harpreet Singh\Documents\GitHub\Integration-Project-Class\BikeShop\obj\Debug\netcoreapp3.1\Razor\Views\Bikes\Touring.cshtml.g.cs

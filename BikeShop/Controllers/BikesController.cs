@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BikeShop.Models;
+using System.Security.Cryptography.X509Certificates;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace BikeShop.Controllers
 {
@@ -32,6 +34,38 @@ namespace BikeShop.Controllers
                            select bikes;
 
             return View(bikeList.ToList());
+        }
+
+        public IActionResult Touring()
+        {
+            var validTouringProducts = (from bikes in db.VProductAndDescription
+                                        where bikes.Culture == "en"
+                                        && bikes.SellEndDate == null
+                                        && bikes.ProductCategoryId == 7
+                                        select new BikeListModel
+                                        {
+                                            ProductModel = bikes.ProductModel,
+                                            Description = bikes.Description,
+                                            ProductModelID = bikes.ProductModelId
+                                        }).Distinct().ToList();
+            
+            return View(validTouringProducts);
+        }
+
+        public IActionResult Mountain()
+        {
+            var validMountainProducts = (from bikes in db.VProductAndDescription
+                                         where bikes.Culture == "en"
+                                         && bikes.SellEndDate == null
+                                         && bikes.ProductCategoryId == 5
+                                         select new BikeListModel
+                                         {
+                                            ProductModel = bikes.ProductModel,
+                                            Description = bikes.Description,
+                                            ProductModelID = bikes.ProductModelId
+                                         }).Distinct().ToList();
+
+            return View(validMountainProducts);
         }
 
         public IActionResult Road()
