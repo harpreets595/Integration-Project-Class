@@ -33,6 +33,8 @@ namespace BikeShop.Controllers
                            where bikes.ParentProductCategoryId == 1
                            select bikes;
 
+
+
             return View(bikeList.ToList());
         }
 

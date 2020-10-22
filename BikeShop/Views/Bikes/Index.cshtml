@@ -2,18 +2,46 @@
 
 @{
     ViewData["Title"] = "Bike Categories";
+
+    
 }
 
 <h1>Amazing Online Bike Company</h1>
 <h1>Browse our Bike categories below</h1>
 
+
 <table class="table">
     <tr>
         @foreach (var item in Model)
-         {
-            <td>
-                @Html.ActionLink(item.Name, item.Name.Substring(0, item.Name.IndexOf(" ")))
-            </td>
-         }
+        {
+            if (item.Name == "Mountain Bikes")
+            {
+                <td>
+                    <div>
+                        @Html.ActionLink(item.Name, item.Name.Substring(0, item.Name.IndexOf(" ")))
+                    </div>
+                    <img src="~/images/1.png" alt="Alternate Text" width="150" height="150" />
+                </td>
+            }
+            if (item.Name == "Road Bikes")
+            {
+                <td>
+                    <div>
+                        @Html.ActionLink(item.Name, item.Name.Substring(0, item.Name.IndexOf(" ")))
+                    </div>
+                    <img src="~/images/2.jpg" alt="Alternate Text" width="150" height="150" />
+                </td>
+            }
+            if (item.Name == "Touring Bikes")
+            {
+                <td>
+                    <div>
+                        @Html.ActionLink(item.Name, item.Name.Substring(0, item.Name.IndexOf(" ")))
+                    </div>
+                    <img src="~/images/3.jpg" alt="Alternate Text" width="150" height="150" />
+                </td>
+            }
+
+        }
     </tr>
 </table>
