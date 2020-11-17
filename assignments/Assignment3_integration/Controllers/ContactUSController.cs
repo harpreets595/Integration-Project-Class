@@ -45,6 +45,11 @@ namespace Assignment3_integration.Controllers
             return View();
         }
 
+        public IActionResult Index(Contact c)
+        {
+            return View(c);
+        }
+
         public IActionResult Success(Contact c)
         {
             return View(c);
@@ -54,7 +59,7 @@ namespace Assignment3_integration.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,PostalCode,Email,PhoneNumber,Topic,Message")] Contact contact)
         {
             if (ModelState.IsValid)

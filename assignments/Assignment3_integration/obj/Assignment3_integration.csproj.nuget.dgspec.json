@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Harpreet Singh\\source\\repos\\Assignment3_integration\\Assignment3_integration.csproj": {}
+    "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Harpreet Singh\\source\\repos\\Assignment3_integration\\Assignment3_integration.csproj": {
+    "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Harpreet Singh\\source\\repos\\Assignment3_integration\\Assignment3_integration.csproj",
+        "projectUniqueName": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
         "projectName": "Assignment3_integration",
-        "projectPath": "C:\\Users\\Harpreet Singh\\source\\repos\\Assignment3_integration\\Assignment3_integration.csproj",
-        "packagesPath": "C:\\Users\\Harpreet Singh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Harpreet Singh\\source\\repos\\Assignment3_integration\\obj\\",
+        "projectPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
+        "packagesPath": "C:\\Users\\harp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Harpreet Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\harp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
