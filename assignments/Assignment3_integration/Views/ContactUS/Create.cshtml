@@ -4,8 +4,10 @@
     ViewData["Title"] = "Create";
 }
 
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+            async defer>
+    </script>
 <h1>Create</h1>
-
 <h4>Contact</h4>
 <hr />
 <div class="row">
@@ -39,7 +41,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="Topic" class="control-label"></label>
-                <input asp-for="Topic" id="myInput6" class="form-control" />
+                <select asp-for="Topic" class="form-control" id="myInput6">
+                    <option selected ="selected" >Select topic</option>
+                    <option>My order</option>
+                    <option>Feedback</option>
+                    <option>Product Questions</option>
+                    <option>Customer service and feedback</option>
+                    <option>Techinical questions, specifation.</option>
+                    <option>Warranty</option>
+                    <option>Registration</option>
+                    <option>Catalogue requests</option>
+                    <option>Owner's manuals</option>
+                    <option>Media enquiries</option>
+                    <option>Product Questions</option>
+                </select>
+
+                @*<input asp-for="Topic" id="myInput6" class="form-control" />*@
                 <span asp-validation-for="Topic" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,8 +65,11 @@
                 <span asp-validation-for="Message" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Email" class="btn btn-primary" />
+                <input disabled type="submit" id="submitBtn" value="Submit" class="btn btn-primary"/>
                 <button type="button" onclick="handleResetForm()" value="Reset" class="btn btn-primary">Reset</button>
+                
+                <div id="recaptcha"></div>
+
             </div>
         </form>
     </div>
@@ -65,7 +85,52 @@
 }
 
 
+
+
 <script>
+
+    var onloadCallback = function () {
+
+        grecaptcha.render('recaptcha', {
+            'sitekey': "6LcyI-QZAAAAAOMeeuMyf2JoIRGfIymx483CdoFQ",
+            'callback': verifyCallback,
+            'theme': 'dark'
+        })
+    }
+
+    var verifyCallback = function () {
+
+        var responseToken = grecaptcha.getResponse();
+
+        var recaptchaVerificationInfo = {
+            secret: "6LcyI-QZAAAAAO-kQ-jFIq3i1r9rQlUWE-tranlo",
+            response: responseToken
+        };
+
+        var options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(recaptchaVerificationInfo)
+        };
+
+        fetch("https://localhost:44386/api/recaptcha", options)
+            .then(res => res.json())
+            .then(apiData => {
+                if (apiData.success) {
+
+                    console.log('inside apidata success')
+                    document.getElementById('submitBtn').disabled = false;
+                }
+                else {
+                    document.getElementById('submitBtn').disabled = true;
+                }
+            });
+    }
+ 
+    @*// Erases all the  inputs from the form.  Reset Button*@
+
     function handleResetForm(e) {
 
         for (var i = 1; i <= 7; i++) {
@@ -73,7 +138,9 @@
 
             document.getElementById(id).value = '';
         }
-    }    
+        // change dropdown default option
+        document.getElementById('myInput6').selectedIndex = 0;
+    }   
 
-
+ 
 </script>

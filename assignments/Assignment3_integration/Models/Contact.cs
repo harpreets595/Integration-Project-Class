@@ -26,6 +26,7 @@ namespace Assignment3_integration.Models
         
         [Required]
         [DataType(DataType.PostalCode)]
+        [RegularExpression("^[ABCEGHJ-NPRSTVXYabceghj-nprstvxy]{1}[0-9]{1}[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]{1}[ ]?[0-9]{1}[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]{1}[0-9]{1}$", ErrorMessage = "Postal Code format accepted: [J7V 0H1]")]
         public string PostalCode { get; set; }
 
 
