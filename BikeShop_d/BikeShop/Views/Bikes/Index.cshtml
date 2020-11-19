@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BikeShop.Models.ProductCategory>
+
+@{
+    ViewData["Title"] = "Bike Categories";
+}
+
+<h1>Amazing Online Bike Company</h1>
+<h2>Browse our Bike Models</h2>
+
+<table class="table" style="text-align: center;">
+ 
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>@Html.ActionLink(item.Name, item.Name.Substring(0, item.Name.IndexOf(" ")))</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action(item.Name.Substring(0, item.Name.IndexOf(" ")), "Bikes")">
+                                    <img style="width:350px" src="~/@item.Name/@item.Name-.png" alt="~/@item.Name/@item.Name-.png" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+
+        }
+    </tr>
+    
+</table>
