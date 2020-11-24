@@ -1,0 +1,71 @@
+﻿@model Test_Practice_as3.Models.Contact
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Contact</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="myForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <select asp-for="Topic" class="form-control" id="myInput6">
+                <option selected="selected">Select topic</option>
+                <option>My order</option>
+                <option>Feedback</option>
+                <option>Product Questions</option>
+                <option>Customer service and feedback</option>
+                <option>Techinical questions, specifation.</option>
+                <option>Warranty</option>
+                <option>Registration</option>
+                <option>Catalogue requests</option>
+                <option>Owner's manuals</option>
+                <option>Media enquiries</option>
+                <option>Product Questions</option>
+            </select>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control" ></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="button" value="Reset" onclick="resetForm()" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script>
+    function resetForm(){
+        document.getElementById("myForm").reset();
+    }
+    
+</script>

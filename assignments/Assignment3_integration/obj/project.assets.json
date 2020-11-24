@@ -9158,19 +9158,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\harp\\.nuget\\packages\\": {}
+    "C:\\Users\\Harpreet Singh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
+      "projectUniqueName": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
       "projectName": "Assignment3_integration",
-      "projectPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
-      "packagesPath": "C:\\Users\\harp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harp\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\obj\\",
+      "projectPath": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\Assignment3_integration.csproj",
+      "packagesPath": "C:\\Users\\Harpreet Singh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Harpreet Singh\\Documents\\GitHub\\Integration-Project-Class\\assignments\\Assignment3_integration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\harp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Harpreet Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9182,6 +9182,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9193,6 +9194,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MailKit": {
             "target": "Package",
@@ -9235,7 +9237,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
