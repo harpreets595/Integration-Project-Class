@@ -1,0 +1,98 @@
+﻿@model Milestone_4A.Models.Contact
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1>Contact</h1>
+<h2>IMPORTANT: Don't forget to do a migration to create the local database first</h2>
+<h2>Migration command: Add-Migration Initial</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6 card">
+        <form asp-action="Contact" class="card-body" id="contact-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Topic" class="control-label"></label>
+                <select asp-for="Topic" class="form-control text" id="topic" name="topic">
+                    <option value="" selected="selected">
+                        Select topic
+                    </option>
+                    <option value="My Order">
+                        My order
+                    </option>
+                    <option value="Product Questions">
+                        Product questions
+                    </option>
+                    <option value="Customer Service & Feedback">
+                        Customer service and feedback
+                    </option>
+                    <option value="Technical Questions, Specifications, Geometry, Sizing, & Historical Information">
+                        Technical questions, specifications, geometry, sizing and historical information
+                    </option>
+                    <option value="Warranty">
+                        Warranty
+                    </option>
+                    <option value="Registration">
+                        Registration
+                    </option>
+                    <option value="Catalog Request">
+                        Catalogue requests
+                    </option>
+                    <option value="Owner's Manuals">
+                        Owner's manuals
+                    </option>
+                    <option value="Media Inquiries">
+                        Media enquiries
+                    </option>
+                    <option value="Sponsorship & Donation">
+                        Sponsorship and donations
+                    </option>
+                </select>
+                <span asp-validation-for="Topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="button" id="contact-btn" value="Create" class="btn btn-primary" />
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <input id="token" type="hidden" name="token" value="" />
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
